@@ -1,0 +1,131 @@
+# Generators
+# # 1
+# def gen1(n):
+#     for i in range(n + 1):
+#         yield i ** 2
+# for i in gen1(10):
+#     print(i, end=' ')
+# print()
+
+# # 2
+# def gen2(n):
+#     for i in range(0, n + 1, 2):
+#         yield i
+# n = int(input())
+# a = gen2(n)
+# print(", ".join(map(str, a)))
+# print()
+
+# # 3
+# def gen3(n):
+#     for i in range(n + 1):
+#         if i % 3 == 0 and i % 4 == 0:
+#             yield i
+# n = int(input())
+# for i in gen3(n):
+#     print(i, end=", ")
+# print()
+
+# # 4
+# def gen4(a, b):
+#     for i in range(a, b + 1):
+#         yield i ** 2
+# for square in gen4(2, 15):
+#     print(square, end=", ")
+# print()
+
+# # 5
+# def gen5(n):
+#     for i in range(n, -1, -1):
+#         yield i
+# for num in gen5(10):
+#     print(num, end=", ")
+
+
+# Date
+# import datetime
+
+# # 1
+# current_date = datetime.date.today()
+# new_date = current_date - datetime.timedelta(days=5)
+# print("Current date:", current_date)
+# print("Date five days ago:", new_date)
+
+# # 2
+# today = datetime.date.today()
+# yesterday = today - datetime.timedelta(days=1)
+# tomorrow = today + datetime.timedelta(days=1)
+# print("Yesterday:", yesterday)
+# print("Today:", today)
+# print("Tomorrow:", tomorrow)
+
+# # 3
+# now_with_microseconds = datetime.datetime.now()
+# print("Datetime with microseconds:", now_with_microseconds)
+
+# # 4
+# date1 = datetime.datetime(2023, 2, 15, 12, 0, 0)
+# date2 = datetime.datetime(2023, 2, 16, 14, 30, 0)
+# difference = date2 - date1
+# print("Difference in seconds:", difference.total_seconds())
+
+
+# Math
+# import math
+
+# # 1
+# def func1(degree):
+#     return degree * (math.pi / 180)
+# degree = 15
+# radian = func1(degree)
+# print(degree)
+# print(round(radian, 6))
+
+# # 2
+# def trapezoid_area(h, b1, b2):
+#     return 0.5 * h * (b1 + b2)
+# h = 5
+# b1 = 5
+# b2 = 6
+# area = trapezoid_area(h, b1, b2)
+# print(h)
+# print(b1)
+# print(b2)
+# print(area)
+
+# # 3
+# def func3(n, l):
+#     return (n * l**2) / (4 * math.tan(math.pi / n))
+# n = 4
+# l = 25
+# a = func3(n, l)
+# print(n)
+# print(l)
+# print(a)
+
+# # 4
+# def area(a, h):
+#     return a * h
+# a = 5
+# h = 6
+# s = area(a, h)
+# print("Expected Output:", s)
+
+#JSON
+import json
+
+with open('sample-data.json', 'r') as file:
+    data = json.load(file)
+
+print("Interface Status")
+print("=" * 80)
+print(f"{'DN':<50} {'Description':<20} {'Speed':<8} {'MTU':<6}")
+print("-" * 80)
+
+for item in data["imdata"]:
+    attributes = item["l1PhysIf"]["attributes"]
+    dn = attributes["dn"]
+    descr = attributes.get("descr", "")
+    speed = attributes["speed"]
+    mtu = attributes["mtu"]
+    print(f"{dn} {descr} {speed} {mtu}")
